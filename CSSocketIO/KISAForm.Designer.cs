@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.BtnReset = new System.Windows.Forms.Button();
-      this.ATTACK = new System.Windows.Forms.Button();
+      this.Btn_Attack = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // BtnReset
@@ -42,22 +42,22 @@
       this.BtnReset.UseVisualStyleBackColor = true;
       this.BtnReset.Click += new System.EventHandler(this.BtnReset_Click);
       // 
-      // ATTACK
+      // Btn_Attack
       // 
-      this.ATTACK.Location = new System.Drawing.Point(303, 12);
-      this.ATTACK.Name = "ATTACK";
-      this.ATTACK.Size = new System.Drawing.Size(285, 426);
-      this.ATTACK.TabIndex = 1;
-      this.ATTACK.Text = "ATTACK";
-      this.ATTACK.UseVisualStyleBackColor = true;
-      this.ATTACK.Click += new System.EventHandler(this.ATTACK_Click);
+      this.Btn_Attack.Location = new System.Drawing.Point(303, 12);
+      this.Btn_Attack.Name = "Btn_Attack";
+      this.Btn_Attack.Size = new System.Drawing.Size(285, 426);
+      this.Btn_Attack.TabIndex = 1;
+      this.Btn_Attack.Text = "ATTACK";
+      this.Btn_Attack.UseVisualStyleBackColor = true;
+      this.Btn_Attack.Click += new System.EventHandler(this.BtnAttack_Click);
       // 
       // KISAForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 450);
-      this.Controls.Add(this.ATTACK);
+      this.Controls.Add(this.Btn_Attack);
       this.Controls.Add(this.BtnReset);
       this.Name = "KISAForm";
       this.Text = "KISA Form";
@@ -70,7 +70,7 @@
     #endregion
 
     private System.Windows.Forms.Button BtnReset;
-    private System.Windows.Forms.Button ATTACK;
+    private System.Windows.Forms.Button Btn_Attack;
   }
 }
 
