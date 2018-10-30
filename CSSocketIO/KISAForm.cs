@@ -20,7 +20,7 @@ namespace CSSocketIO
 {
   public partial class KISAForm : Form
   {
-    Socket socket;
+    private Socket socket;
 
     public KISAForm()
     {
@@ -35,7 +35,43 @@ namespace CSSocketIO
       {
         Debug.WriteLine("EVENT_CONNECT");
       });
+
+      this.socket.On("speed-cs", (v) =>
+      {
+        String s = String.Format("{0:F0}", Convert.ToDouble(v));
+        CSafeSetText(speed, s);
+      });
+
+      this.socket.On("gear-cs", (v) =>
+      {
+        String s = String.Format("{0:F0}", v);
+        CSafeSetText(gear, s);
+      });
     }
+
+    delegate void CrossThreadSafetySetText(Control ctl, String text);
+
+    private void CSafeSetText(Control ctl, String text)
+    {
+      if (ctl.InvokeRequired)
+      {
+        ctl.Invoke(new CrossThreadSafetySetText(CSafeSetText), ctl, text);
+      }
+      else
+      {
+        ctl.Text = text;
+      }
+    }
+
+    //public void setSpeed(String str)
+    //{
+    //  this.speed.Text = str;
+    //}
+
+    //public void setGear(String str)
+    //{
+    //  this.gear.Text = str;
+    //}
 
     private void BtnReset_Click(object sender, EventArgs e)
     {
