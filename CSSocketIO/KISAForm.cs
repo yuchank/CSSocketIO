@@ -25,6 +25,10 @@ namespace CSSocketIO
     public KISAForm()
     {
       InitializeComponent();
+
+      // Full Screen 
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+      this.WindowState = FormWindowState.Maximized;
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -39,13 +43,13 @@ namespace CSSocketIO
       this.socket.On("speed-cs", (v) =>
       {
         String s = String.Format("{0:F0}", Convert.ToDouble(v));
-        CSafeSetText(speed, s);
+        // CSafeSetText(speed, s);
       });
 
       this.socket.On("gear-cs", (v) =>
       {
         String s = String.Format("{0:F0}", v);
-        CSafeSetText(gear, s);
+        // CSafeSetText(gear, s);
       });
     }
 
@@ -73,19 +77,9 @@ namespace CSSocketIO
     //  this.gear.Text = str;
     //}
 
-    private void BtnReset_Click(object sender, EventArgs e)
-    {
-      this.socket.Emit("reset", "reset");
-    }
-
     private void KISAForm_FormClosing(object sender, FormClosingEventArgs e)
     {
       this.socket.Disconnect();
-    }
-
-    private void BtnAttack_Click(object sender, EventArgs e)
-    {
-      this.socket.Emit("attack", "attack");
     }
 
     protected override void WndProc(ref Message m)
@@ -110,6 +104,21 @@ namespace CSSocketIO
         }
       }
       base.WndProc(ref m);
+    }
+
+    private void BtnApp_Click(object sender, EventArgs e)
+    {
+      this.socket.Emit("app", "app");
+    }
+
+    private void BtnOBD_Click(object sender, EventArgs e)
+    {
+      this.socket.Emit("obd", "obd");
+    }
+
+    private void BtnAuto_Click(object sender, EventArgs e)
+    {
+      this.socket.Emit("auto", "auto");
     }
 
     //public void RefreshDevice()
