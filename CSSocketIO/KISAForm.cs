@@ -80,6 +80,7 @@ namespace CSSocketIO
     private void KISAForm_FormClosing(object sender, FormClosingEventArgs e)
     {
       this.socket.Disconnect();
+      this.socket.Close();
     }
 
     protected override void WndProc(ref Message m)
